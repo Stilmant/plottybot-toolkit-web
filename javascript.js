@@ -91,6 +91,29 @@ function calibrate_manually() {
 	ajax_call( "command.php", ["command", "calibrate_manually"], null ) ;
 }
 
+function calibrate_origin() {
+	show("section_draw_disabled");
+	show("section_mandalagaba_disabled");
+	var elements_to_disable = document.getElementsByClassName("needs_calibration");
+	for (var i = 0; i < elements_to_disable.length; i++) {
+		elements_to_disable[i].disabled = true;
+	}
+	var elements_to_disable = document.getElementsByClassName("needs_calibration_and_wifi");
+	for (var i = 0; i < elements_to_disable.length; i++) {
+		elements_to_disable[i].disabled = true;
+	}
+	show("draw_actuation_disabled_overlay");
+	hide("section_calibration_pen_adjustment");
+	hide("section_calibration_selection");
+	show("section_calibration_origin");
+	document.getElementById("section_calibration_origin_instructions").innerHTML = "Move the head to the 0,0 position to reset that position.";
+}
+
+function calibrate_origin_fixate() {
+	ajax_call("command.php", ["command", "calibrate_origin_fixate"], null);
+	hide("section_calibration_origin");
+	show("section_calibration_selection");
+}
 
 function draw() {
 	if( ink_refill_conflict_check() ) {
@@ -197,7 +220,7 @@ function interpret_status( status ) {
 		show( "section_calibration_pen_adjustment" ) ;
 		hide( "section_calibration_automatic" ) ;
 		hide( "section_calibration_manual" ) ;
-		
+
 		document.getElementById( "calibrate_manually" ).innerHTML = "Re-" + document.getElementById( "calibrate_manually" ).innerHTML ;
 		document.getElementById( "calibrate_automatic" ).innerHTML = "Re-" + document.getElementById( "calibrate_automatic" ).innerHTML ;
 	}
@@ -720,7 +743,7 @@ function gcode_changed() {
 		                                                        document.getElementById('aggregation_algorithm').value,
 		                                                        {x:parseInt(document.getElementById('aggregation_algorithm_polarized_x').value), y:parseInt(document.getElementById('aggregation_algorithm_polarized_y').value)},
 		                                                        document.getElementById('skip_pen_jumps_shorter_than_value').value ) ;
-	tcode_changed( 10, 10 ) ;	 		
+	tcode_changed( 10, 10 ) ;
 }
 
 
