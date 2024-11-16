@@ -63,9 +63,9 @@
 			</div>
 			<br/>
 			<center><table>
-				<tr><td></td><td><button class="btn btn-lg btn-light fas fa-arrow-up" onMouseDown="calibrate_manually_step_up()"/></button></td><td></td></tr>
-				<tr><td><button class="btn btn-lg btn-light fas fa-arrow-left" onMouseDown="calibrate_manually_step_left()"/></button></td><td></td><td><button class="btn btn-lg btn-light fas fa-arrow-right" onMouseDown="calibrate_manually_step_right()"/></button></td></tr>
-				<tr><td></td><td><button class="btn btn-lg btn-light fas fa-arrow-down" onMouseDown="calibrate_manually_step_down()"/></button></td><td></td></tr>
+				<tr><td></td><td><button class="btn btn-lg btn-light fas fa-arrow-up" onMouseDown="calibrate_origin_step_up()"/></button></td><td></td></tr>
+				<tr><td><button class="btn btn-lg btn-light fas fa-arrow-left" onMouseDown="calibrate_origin_step_left()"/></button></td><td></td><td><button class="btn btn-lg btn-light fas fa-arrow-right" onMouseDown="calibrate_origin_step_right()"/></button></td></tr>
+				<tr><td></td><td><button class="btn btn-lg btn-light fas fa-arrow-down" onMouseDown="calibrate_origin_step_down()"/></button></td><td></td></tr>
 			</table></center>
 			<br/>
 			<button class="btn btn-lg btn-light" onMouseDown="calibrate_origin_fixate()">Head is at the 0,0 axis position</button>

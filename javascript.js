@@ -109,6 +109,31 @@ function calibrate_origin() {
 	document.getElementById("section_calibration_origin_instructions").innerHTML = "Move the head to the 0,0 position to reset that position.";
 }
 
+function calibrate_origin_step_down() {
+	ajax_call("command.php", ["command", "calibrate_origin_step_down"], null);
+	window.addEventListener("mouseup", calibrate_origin_step_stop);
+}
+
+function calibrate_origin_step_up() {
+	ajax_call("command.php", ["command", "calibrate_origin_step_up"], null);
+	window.addEventListener("mouseup", calibrate_origin_step_stop);
+}
+
+function calibrate_origin_step_left() {
+	ajax_call("command.php", ["command", "calibrate_origin_step_left"], null);
+	window.addEventListener("mouseup", calibrate_origin_step_stop);
+}
+
+function calibrate_origin_step_right() {
+	ajax_call("command.php", ["command", "calibrate_origin_step_right"], null);
+	window.addEventListener("mouseup", calibrate_origin_step_stop);
+}
+
+function calibrate_origin_step_stop() {
+	ajax_call("command.php", ["command", "calibrate_origin_step_stop"], null);
+	window.removeEventListener("mouseup", calibrate_origin_step_stop);
+}
+
 function calibrate_origin_fixate() {
 	ajax_call("command.php", ["command", "calibrate_origin_fixate"], null);
 	hide("section_calibration_origin");
@@ -223,6 +248,7 @@ function interpret_status( status ) {
 
 		document.getElementById( "calibrate_manually" ).innerHTML = "Re-" + document.getElementById( "calibrate_manually" ).innerHTML ;
 		document.getElementById( "calibrate_automatic" ).innerHTML = "Re-" + document.getElementById( "calibrate_automatic" ).innerHTML ;
+		document.getElementById( "calibrate_origin" ).innerHTML = "Re-" + document.getElementById( "calibrate_origin" ).innerHTML ;
 	}
 
 	if( document.getElementById( 'default_step_sleep' ).value!=status['default_step_sleep'] ) {
